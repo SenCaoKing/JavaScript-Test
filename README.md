@@ -1,2 +1,2 @@
-# QueryList
-QueryList基于phpQuery的PHP采集工具
+# JavaScript
+
