@@ -1,4 +1,11 @@
-/* 入门篇 - 基本语法 */
+/**
+ * JavaScript教程
+ */
+
+/**
+ * 入门篇
+ * 基本语法
+ */
 
 // 4. 注释
 function countdown(n) {
@@ -40,5 +47,21 @@ for(var i = 0; i < 3; i++){
 // i=2, j=1
 // i=2, j=2
 
+
+/**
+ * 数据类型
+ * 字符串
+ */
+// 3 Base64 转码
+function b64Encode(str) {
+	return btoa(encodeURIComponent(str));
+}
+
+function b64Decode(str) {
+	return decodeURIComponent(atob(str));
+}
+
+b64Encode('你好'); // "JUU0JUJEJUEwJUU1JUE1JUJE"
+b64Decode(); // "你好"
 
 
