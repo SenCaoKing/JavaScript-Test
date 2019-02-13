@@ -33,8 +33,8 @@ switch(x) {
 // 7.5 标签(label)
 // 标签通常与 break 语句和 continue 语句配合使用，跳出特定的循环。
 top:
-for(var i = 0; i < 3; i++){
-	for(var j = 0; j < 3; j++){
+for(var i = 0; i < 3; i++) {
+	for(var j = 0; j < 3; j++) {
 		if(i === 1 && j === 1) continue top;
 		console.log('i=' + i + ', j=' + j);
 	}
@@ -128,15 +128,15 @@ b; // 10
 // 6 finally 代码块
 // try...catch结构允许在最后添加一个finally代码块，表示不管是否出现错误，都必需在最后运行的语句。
 // 下面的例子充分反映了 try...catch...finally 这三者之间的执行顺序。
-function f(){
-	try{
+function f() {
+	try {
 		console.log(0);
 		throw 'bug';
-	}catch(e){
+	} catch(e) {
 		console.log(1);
 		return true; // 这句原本会延迟到 finally 代码块结束再执行
 		console.log(2); // 不会运行
-	}finally{
+	} finally {
 		console.log(3);
 		return false; // 这句会覆盖掉前面那句 return
 		console.log(4); // 不会运行
@@ -152,6 +152,55 @@ var result = f();
 
 result;
 // false
+
+
+/**
+ * 语法专题
+ * 编程风格
+ */
+
+// 12 switch...case 结构
+
+// switch...case结构要求，在每一个case的最后一行必须是break语句，否则会接着运行下一个case。这样不仅容易忘记，还会造成代码的冗长。
+
+// 而且，switch...case不使用大括号，不利于代码形式的统一。此外，这种结构类似于goto语句，容易造成程序流程的混乱，使得代码结构混乱不堪，不符合面向对象编程的原则。
+
+function doAction(action) {
+	switch(action) {
+		case 'hack':
+			return 'hack';
+		case 'slash':
+			return 'slash';
+		case 'run':
+			return 'run';
+		default:
+			throw new Error('Invalid action.');
+	}
+}
+
+// 改写成对象结构
+function doActionOop(action) {
+	var actions = {
+		'hack': function () {
+			return 'hack';
+		},
+		'slash': function () {
+			return 'slash';
+		},
+		'run': function () {
+			return 'run';
+		}
+	};
+
+	if (typeof actions[action] !== 'function'){
+		throw new Error('Invalid action.');
+	}
+
+	return actions[action]();
+}
+
+
+
 
 
 
