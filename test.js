@@ -120,10 +120,37 @@ a ^= b, b ^= a, a ^= b; // 这是互换两个变量的值得最快方法。
 a; // 99
 b; // 10
 
+/**
+ * 语法专题
+ * 错误处理机制
+ */
 
+// 6 finally 代码块
+// try...catch结构允许在最后添加一个finally代码块，表示不管是否出现错误，都必需在最后运行的语句。
+// 下面的例子充分反映了 try...catch...finally 这三者之间的执行顺序。
+function f(){
+	try{
+		console.log(0);
+		throw 'bug';
+	}catch(e){
+		console.log(1);
+		return true; // 这句原本会延迟到 finally 代码块结束再执行
+		console.log(2); // 不会运行
+	}finally{
+		console.log(3);
+		return false; // 这句会覆盖掉前面那句 return
+		console.log(4); // 不会运行
+	}
 
+	console.log(5); // 不会运行
+}
 
+var result = f();
+// 0
+// 1
+// 3
 
-
+result;
+// false
 
 
