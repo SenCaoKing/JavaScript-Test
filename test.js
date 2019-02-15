@@ -200,7 +200,27 @@ function doActionOop(action) {
 }
 
 
+/**
+ * 标准库
+ * Array 对象
+ */
 
+// 3.16 链式使用
+var users = [
+	{name: 'tom', email: 'tom@example.com'},
+	{name: 'peter', email: 'peter@example.com'}
+];
+
+users
+	.map(function (user) {
+		return user.email;
+	})
+	.filter(function (email) {
+		return /^t/.test(email);
+	})
+	.forEach(function (email) {
+		console.log(email);
+	});
 
 
 
